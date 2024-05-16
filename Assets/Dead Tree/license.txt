@@ -1,0 +1,11 @@
+Model Information:
+* title:	4 Linden Trees Pack (medium-Poly)
+* source:	https://sketchfab.com/3d-models/4-linden-trees-pack-medium-poly-b497c5f3f26344c29f27f53dc2ca74f4
+* author:	Sereib (https://sketchfab.com/Sereib)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "4 Linden Trees Pack (medium-Poly)" (https://sketchfab.com/3d-models/4-linden-trees-pack-medium-poly-b497c5f3f26344c29f27f53dc2ca74f4) by Sereib (https://sketchfab.com/Sereib) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

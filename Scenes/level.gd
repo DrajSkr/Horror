@@ -16,8 +16,8 @@ func _ready():
 	var y_axis=50
 	while(x_axis>-50):
 		while(y_axis>-50):
-			var ranx = randf_range(kitna_pas/4,3*kitna_pas/4)
-			var rany = randf_range(kitna_pas/4,3*kitna_pas/4)
+			var ranx = randf_range(kitna_pas/4.0,3*kitna_pas/4.0)
+			var rany = randf_range(kitna_pas/4.0,3*kitna_pas/4.0)
 			var which_tree = randi_range(1,4)
 			var rot = randi_range(-180,180)
 			var deadtree

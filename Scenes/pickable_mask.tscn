@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://fgc5sryr2y7j"]
+[gd_scene load_steps=4 format=3 uid="uid://nn6bo7vwmhuj"]
 
 [ext_resource type="PackedScene" uid="uid://qu7kgym4vogn" path="res://Assets/LowPolyMask/low-poly_minimal_gas_mask.glb" id="1_6bkat"]
 [ext_resource type="Script" path="res://Scripts/low-poly_minimal_gas_mask.gd" id="2_eepqh"]

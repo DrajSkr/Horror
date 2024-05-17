@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ib5gi2hec2dj"]
+
+[ext_resource type="PackedScene" uid="uid://bednbbotc7xhv" path="res://Assets/Torch/flashlight.glb" id="1_ftp0h"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_ftp0h")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.43531)
+light_energy = 7.0
+light_volumetric_fog_energy = 2.455
+spot_range = 21.7971
+spot_attenuation = 0.0743255
+spot_angle = 30.1336
+spot_angle_attenuation = 0.63728

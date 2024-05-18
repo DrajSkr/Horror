@@ -7,8 +7,8 @@
 [node name="Loudness" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1952.0
-offset_bottom = 1139.0
+offset_right = 1920.0
+offset_bottom = 1082.0
 script = ExtResource("1_cgf4x")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

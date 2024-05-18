@@ -6,6 +6,7 @@ extends Node
 
 
 func _ready():
+	Global.
 	for item in AudioServer.get_input_device_list():
 		item_list.add_item(item)
 

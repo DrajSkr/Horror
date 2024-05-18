@@ -12,8 +12,9 @@ var gravity = 12
 
 
 func _ready():
-	#cam.enabled = is_multiplayer_authority()
+	cam.current = is_multiplayer_authority()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 
 
 func _unhandled_input(event):

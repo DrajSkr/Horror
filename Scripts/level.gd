@@ -10,7 +10,9 @@ func _unhandled_input(_event):
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
-	var kitna_pas = 10
+	if !is_multiplayer_authority():
+		return
+	var kitna_pas = 5
 	var x_axis=50
 	var y_axis=50
 	while(x_axis>-50):

@@ -12,16 +12,21 @@ var gravity = 12
 
 
 func _ready():
+	#cam.enabled = is_multiplayer_authority()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _unhandled_input(event):
+	if !is_multiplayer_authority():
+		return
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
 		cam.rotate_x(-event.relative.y * (0.0001+camera_sensitivity*0.0001))
 		cam.rotation.x = clamp(cam.rotation.x , -PI/2,PI/2)
 
 func _physics_process(delta):
+	if !is_multiplayer_authority():
+		return
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

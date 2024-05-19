@@ -2,63 +2,79 @@ extends Node2D
 
 var lobby_id = 0
 var peer = SteamMultiplayerPeer.new()
-
+@onready var generatedkey = $GeneratedKey
+@onready var key = $EnterKey
+@onready var playerCount = $Panel/Playercount
+@onready var playerList = $Panel/Players
 @onready var ms = $MultiplayerSpawner
+var LOBBY_MEMBERS = []
+var lid = 0
 
 func _ready():
 	ms.spawn_function = spawn_level
+	$GeneratedKey.hide()
 	peer.lobby_created.connect(_on_lobby_created)
-	Steam.lobby_match_list.connect(_on_lobby_match_list)
-	open_lobby_list()
-
+	peer.lobby_joined.connect(_on_Lobby_Joined)
+	
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()
 	return a
-
+	
 func _on_host_pressed():
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
-	multiplayer.multiplayer_peer = peer	
-	ms.spawn("res://Scenes/level.tscn")
-	$Host.hide()
-	$LobbyContainer/Lobbies.hide()
-	$Refresh.hide()
-	
-	
-func join_lobby(id):
-	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
-	lobby_id = id
+	$GeneratedKey.show()
 	$Host.hide()
-	$LobbyContainer/Lobbies.hide()
-	$Refresh.hide()
+	$Join.hide()
+	$EnterKey.hide()
 	
 func _on_lobby_created(connect, id):
 	if connect:
 		lobby_id = id
-		Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName()+"'s Lobby"))
+		Steam.setLobbyData(lobby_id, "name", str(generatedkey.text))
 		Steam.setLobbyJoinable(lobby_id,true)
-		print(lobby_id)
-	
-func open_lobby_list():
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	Steam.requestLobbyList()
-	
-func _on_lobby_match_list(lobbies):
-	
-	for lobby in lobbies:
-		var lobby_name = Steam.getLobbyData(lobby, "name")
-		var memb_count = Steam.getNumLobbyMembers(lobby)
-		
-		var but = Button.new()
-		but.set_text(str(lobby_name,"| Player Count: ", memb_count))
-		but.set_size(Vector2(100,5))
-		but.connect("pressed", Callable(self, "join_lobby").bind(lobby))
-		
-		$LobbyContainer/Lobbies.add_child(but)
+		get_Lobby_Members()
+		generatedkey.text = str(lobby_id)
 
+func _on_join_pressed():
+	lobby_id = int(key.text)
+	print(lobby_id)
+	Steam.joinLobby(lobby_id)
+	await get_tree().create_timer(.5).timeout
+	get_Lobby_Members()
+	
+	
+func _on_Lobby_Joined(id):
+	lobby_id = id
+	get_Lobby_Members()
+	
+func get_Lobby_Members():
+	LOBBY_MEMBERS.clear()
+	var MEMBERCOUNT = Steam.getNumLobbyMembers(lobby_id)
+	playerCount.set_text("Players (" +str(MEMBERCOUNT) + ")")
+	
+	for MEMBER in range(0, MEMBERCOUNT):
+		var MEMBER_STEAM_ID = Steam.getLobbyMemberByIndex(lobby_id, MEMBER)
+		var MEMBER_STEAM_NAME = Steam.getFriendPersonaName(MEMBER_STEAM_ID)
+		add_Player_List(MEMBER_STEAM_ID, MEMBER_STEAM_NAME)
 
+func add_Player_List(steam_id, steam_name):
+	LOBBY_MEMBERS.append({"steam_id":steam_id, "steam_name":steam_name})
+	playerList.clear()
+	for MEMBER in LOBBY_MEMBERS:
+		playerList.add_text(str(MEMBER['steam_name']) + "\n")
+	
 func _on_refresh_pressed():
-	if $LobbyContainer/Lobbies.get_child_count() > 0:
-		for n in $LobbyContainer/Lobbies.get_children():
-			n.queue_free()
-	open_lobby_list()
+		get_Lobby_Members()
+
+func _on_start_pressed():
+	if lobby_id:
+		$Host.hide()
+		$Join.hide()
+		$Start.hide()
+		$Refresh.hide()
+		$GeneratedKey.hide()
+		$EnterKey.hide()
+		$Panel.hide()
+		ms.spawn("res://Scenes/level.tscn")
+	

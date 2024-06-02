@@ -1,7 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bw3ffg7qsnjk3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mox53"]
-load_path = "res://.godot/imported/nature_bark_linden_07_m_0001.jpg_baseColor.jpeg-b73d58b01dee0342f2d1bf5ab6f15b24.s3tc.ctex"
 
 [resource]
 resource_name = "nature_bark_linden_07_m_0001.jpg"

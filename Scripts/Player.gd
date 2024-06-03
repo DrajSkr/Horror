@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 300
+const JUMP_VELOCITY = 5
 
 var dir : Vector2
 
@@ -15,15 +15,15 @@ var gravity = 12
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	pass
 
 func _unhandled_input(event):
-	if !is_multiplayer_authority():
-		return
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
 		cam.rotate_x(-event.relative.y * (0.0001+camera_sensitivity*0.0001))
 		cam.rotation.x = clamp(cam.rotation.x , -PI/2,PI/2)
+	
+	
 
 func _physics_process(delta):
 	dir = Input.get_vector("left","right","up","down").normalized()
@@ -37,11 +37,11 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var direction = (transform.basis * Vector3(dir.x, 0, dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED *delta
+		velocity.z = direction.z * SPEED *delta
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED*delta)
+		velocity.z = move_toward(velocity.z, 0, SPEED*delta)
 
 	move_and_slide()
 	

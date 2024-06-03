@@ -5,11 +5,6 @@ extends StaticBody3D
 func _ready():
 	get_child(0).visibility_range_begin = 0
 	get_child(0).visibility_range_begin_margin=0
-	get_child(0).visibility_range_end = 50
-	get_child(0).visibility_range_end_margin = 20
+	get_child(0).visibility_range_end = 40
+	get_child(0).visibility_range_end_margin = 15
 	get_child(0).visibility_range_fade_mode = 1
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass

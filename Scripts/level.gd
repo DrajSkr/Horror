@@ -7,6 +7,8 @@ extends Node3D
 @onready var windsound =$"wind sound"
 @onready var bgmusic =$bgmusic
 @onready var floormesh=$Floor/MeshInstance3D
+@onready var grass=$SimpleGrassTextured
+@onready var player = $Player
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("quit"):

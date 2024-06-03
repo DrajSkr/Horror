@@ -1,26 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7o8psq0upe3d"]
+[gd_scene load_steps=3 format=3 uid="uid://b7o8psq0upe3d"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0b8n4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
 radius = 0.4
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_iqy6e"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("AnimationTree:parameters/conditions/idle")
-properties/2/spawn = true
-properties/2/replication_mode = 2
-properties/3/path = NodePath("AnimationTree:parameters/conditions/jump")
-properties/3/spawn = true
-properties/3/replication_mode = 2
-properties/4/path = NodePath("AnimationTree:parameters/conditions/walk")
-properties/4/spawn = true
-properties/4/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
@@ -34,6 +17,3 @@ shape = SubResource("CapsuleShape3D_b13to")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41352, 0)
 current = true
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_iqy6e")

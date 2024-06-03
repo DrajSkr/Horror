@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1pdhvgg4j1k2"]
+
+[ext_resource type="Script" path="res://Scripts/Stick.gd" id="1_dkfpa"]
+[ext_resource type="ArrayMesh" uid="uid://tqcqjjqsvoj2" path="res://Assets/Sticks/Stick1.res" id="1_nr4mb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i246d"]
+height = 1.93803
+radius = 0.155884
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_44bvp"]
+radius = 0.325706
+
+[node name="stick1" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_dkfpa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_nr4mb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42239e-09, 0.0554178, 0)
+shape = SubResource("CylinderShape3D_i246d")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36891e-09, -0.031317, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_44bvp")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

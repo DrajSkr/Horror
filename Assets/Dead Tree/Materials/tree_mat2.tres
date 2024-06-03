@@ -1,10 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2sv1hctvmtn8"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e3ude"]
+[ext_resource type="Texture2D" uid="uid://br6pm4w5ctl0p" path="res://Assets/Dead Tree/Textures/nature_bark_linden_04_m_0001.jpeg" id="1_7172d"]
 
 [resource]
 resource_name = "nature_bark_linden_04_m_0001.jpg"
 cull_mode = 2
-albedo_texture = SubResource("CompressedTexture2D_e3ude")
-metallic = 0.160765
+albedo_texture = ExtResource("1_7172d")
 roughness = 0.675319

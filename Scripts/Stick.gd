@@ -4,13 +4,6 @@ extends RigidBody3D
 @onready var s2= preload("res://Assets/Sticks/small_stick_2.tscn")
 @onready var s3= preload("res://Assets/Sticks/small_stick_3.tscn")
 
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_area_3d_body_entered(body):

@@ -3,17 +3,31 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0b8n4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
-radius = 0.4
+radius = 0.25
+height = 1.4
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 12
 floor_constant_speed = true
 script = ExtResource("1_0b8n4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 rotation_order = 3
 shape = SubResource("CapsuleShape3D_b13to")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41352, 0)
 current = true
+
+[node name="Flashlight" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21931)
+light_color = Color(0.927628, 0.761894, 0.486042, 1)
+light_energy = 50.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+spot_range = 20.0
+spot_attenuation = 0.225313
+spot_angle = 28.0

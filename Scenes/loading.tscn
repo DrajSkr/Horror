@@ -23,6 +23,7 @@ fit_content = true
 tab_size = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
 offset_left = 234.0
 offset_top = 431.0
 offset_right = 901.0

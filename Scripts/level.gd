@@ -5,13 +5,14 @@ extends Node3D
 @onready var deadtree4 =load("res://Assets/Dead Tree/object_4.tscn")
 @onready var bush_inst = load("res://Scenes/bush.tscn")
 
+@onready var windsound =$"wind sound"
+@onready var bgmusic =$bgmusic
+
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
 func _ready():
-	var windsound =$"wind sound"
-	var bgmusic =$bgmusic
 
 	var kitna_pas = 5
 	var halfmaplength=250
@@ -53,11 +54,16 @@ func _ready():
 			y_axis-=kitna_pas
 		x_axis-= kitna_pas
 		y_axis=halfmaplength
-	windsound.play()
-	bgmusic.play()
 
 
 func _on_timer_timeout():
-	$Label.text = "FPS: "+ str(Engine.get_frames_per_second())
+	$Fps.text = "FPS: "+ str(Engine.get_frames_per_second())
 	$Timer.start(1)
 
+func _on_timer_2_timeout():
+	var player = load("res://Scenes/player.tscn").instantiate()
+	get_node("characters").add_child(player)
+	player.global_position = Vector3.ZERO
+	windsound.play()
+	bgmusic.play()
+	$Gen.visible = false

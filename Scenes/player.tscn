@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7o8psq0upe3d"]
+[gd_scene load_steps=5 format=3 uid="uid://b7o8psq0upe3d"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ph00l"]
 [ext_resource type="AudioStream" uid="uid://c1ukakjl3qe8k" path="res://Sounds/bush (mp3cut.net).mp3" id="2_150fj"]
+[ext_resource type="AudioStream" uid="uid://bxthn4x8l6827" path="res://Sounds/torch.mp3" id="3_p1j8m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
 radius = 0.15
@@ -36,3 +37,6 @@ spot_angle = 28.0
 [node name="bush" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_150fj")
 bus = &"bush_sounds"
+
+[node name="torch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p1j8m")

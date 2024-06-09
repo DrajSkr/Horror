@@ -1,7 +1,6 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://8jtvrpvv21fo"]
 
 [resource]
-bus/0/send = &"game_sounds"
 bus/1/name = &"music"
 bus/1/solo = false
 bus/1/mute = false

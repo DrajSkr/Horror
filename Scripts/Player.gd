@@ -9,6 +9,7 @@ var gravity = 12
 @onready var flashlight = $Camera3D/Flashlight
 @export var camera_sensitivity = 50 #1 to 100 only,baaki v ho skte hai wese...
 @onready var bushsound =$bush
+@onready var torch =$torch
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -44,7 +45,9 @@ func _physics_process(delta):
 		bushsound.stop()
 	
 func _hiddeninbush():
-	if(Global.hiddeninsidebush):
-		flashlight.visible =false
+	if Global.hiddeninsidebush :
+		flashlight.visible = false
+		torch.play()
 	else:
-		flashlight.visible =true
+		flashlight.visible = true
+		torch.play()

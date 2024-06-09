@@ -1,18 +1,24 @@
 extends CharacterBody3D
 
-@onready var torchsound = $torch
+
+@onready var walking_sound = $walking
+@onready var running_sound = $running
+@onready var jump_sound = $jump
+@onready var torch_sound = $torch
+@onready var flashlight = $Camera3D/Flashlight
+@onready var cam=$Camera3D
+
+
 @onready var speed :float= 250
 const JUMP_VELOCITY :float= 5.0
-const Walk_speed = 250
-const Sprint_speed = 400
+const Walk_speed = 170
+const Sprint_speed = 280
 
 var dir : Vector2
 var holding_sprint = false
 var breathein = true
 
-@onready var cam=$Camera3D
 @export var camera_sensitivity :int= 50 #1 to 100 only,baaki v ho skte hai wese...
-@onready var flashlight = $Camera3D/Flashlight
 
 var gravity :float = 12.0
 
@@ -65,10 +71,10 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("Sprint"):
 		holding_sprint = true
 		speed = Sprint_speed
-	if Input.is_action_just_released("Sprint"):
+	if Input.is_action_just_released("Sprint") or Global.hiddeninsidebush:
 		holding_sprint=false
 		speed = Walk_speed
-
+			
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
 		cam.rotate_x(-event.relative.y * (0.0001+camera_sensitivity*0.0001))
@@ -77,15 +83,13 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	dir = Input.get_vector("left","right","up","down").normalized()
-	
 	update_cam_movement(delta)
-	
-
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if(not Global.hiddeninsidebush):
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
 		var direction = (transform.basis * Vector3(dir.x, 0, dir.y)).normalized()
 		if direction:
 			velocity.x = direction.x * speed *delta
@@ -96,13 +100,20 @@ func _physics_process(delta):
 		move_and_slide()
 		Global.dir = dir
 	
+	if(dir != Vector2.ZERO and holding_sprint and not Global.hiddeninsidebush and not running_sound.playing):
+		running_sound.play()
+	if(dir != Vector2.ZERO and not holding_sprint and not Global.hiddeninsidebush and not walking_sound.playing):
+		walking_sound.play()
+	if(dir == Vector2.ZERO):
+		running_sound.stop()
+		walking_sound.stop()
+	
 func _hiddeninbush():
 	flashlight.visible = false
-	torchsound.play()
+	torch_sound.play()
 	Global.hiddeninsidebush = true
 
 func _nothiddeninbush():
 	flashlight.visible = true
-	torchsound.play()
+	torch_sound.play()
 	Global.hiddeninsidebush = false
-	

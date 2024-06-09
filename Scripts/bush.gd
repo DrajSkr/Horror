@@ -19,10 +19,9 @@ func _on_detect_body_exited(body):
 	if body.name == "Player":
 		inbush = false
 		
-
 func _process(_delta):
 	if (inbush and not Global.hiddeninsidebush and Global.dir != Vector2.ZERO and !bushsound.playing):
-		bushsound.play()
+		bushsound.play(randf())
 	elif (inbush and Global.dir == Vector2.ZERO):
 		bushsound.stop()
 	elif (Global.hiddeninsidebush):

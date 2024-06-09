@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7o8psq0upe3d"]
+[gd_scene load_steps=7 format=3 uid="uid://djrio3rqmhddy"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0b8n4"]
+[ext_resource type="AudioStream" uid="uid://dtakfx6t0ov1u" path="res://Sounds/running.mp3" id="3_heqxr"]
 [ext_resource type="AudioStream" uid="uid://bxthn4x8l6827" path="res://Sounds/torch.mp3" id="3_p1j8m"]
+[ext_resource type="AudioStream" uid="uid://bskxhs34a42a4" path="res://Sounds/walking.mp3" id="4_xanjg"]
+[ext_resource type="AudioStream" uid="uid://ca11ejosjffhg" path="res://Sounds/jump.mp3" id="5_4cqfv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
 radius = 0.2
@@ -36,3 +39,15 @@ spot_angle = 28.0
 [node name="torch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_p1j8m")
 bus = &"bush_sounds"
+
+[node name="running" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_heqxr")
+bus = &"footstep_sounds"
+
+[node name="walking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xanjg")
+bus = &"footstep_sounds"
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4cqfv")
+bus = &"footstep_sounds"

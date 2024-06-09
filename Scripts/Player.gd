@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-
-@onready var bushsound = $bush
 @onready var torchsound = $torch
-@onready var speed :float= 250.0
+@onready var speed :float= 250
 const JUMP_VELOCITY :float= 5.0
+const Walk_speed = 250
+const Sprint_speed = 400
 
 var dir : Vector2
 var holding_sprint = false
@@ -59,14 +59,15 @@ func update_cam_movement(delta):
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.connect("hiddeninbush",_hiddeninbush)
+	Global.connect("nothiddeninbush",_nothiddeninbush)
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Sprint"):
 		holding_sprint = true
-		speed = 400.0
+		speed = Sprint_speed
 	if Input.is_action_just_released("Sprint"):
 		holding_sprint=false
-		speed = 250.0
+		speed = Walk_speed
 
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
@@ -93,17 +94,15 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, speed*delta)
 			velocity.z = move_toward(velocity.z, 0, speed*delta)
 		move_and_slide()
-	if Global.inbush and not Global.hiddeninsidebush and dir != Vector2.ZERO and !bushsound.playing:
-		bushsound.play()
-	elif Global.inbush and not Global.hiddeninsidebush and dir == Vector2.ZERO:
-		bushsound.stop()
-	elif not Global.inbush:
-		bushsound.stop()
+		Global.dir = dir
 	
 func _hiddeninbush():
-	if Global.hiddeninsidebush :
-		flashlight.visible = false
-		torchsound.play()
-	else:
-		flashlight.visible = true
-		torchsound.play()
+	flashlight.visible = false
+	torchsound.play()
+	Global.hiddeninsidebush = true
+
+func _nothiddeninbush():
+	flashlight.visible = true
+	torchsound.play()
+	Global.hiddeninsidebush = false
+	

@@ -26,10 +26,6 @@ driver/enable_input=true
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 Global="*res://Scripts/Global.gd"
 
-[display]
-
-window/size/mode=3
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")

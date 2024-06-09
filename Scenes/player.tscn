@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7o8psq0upe3d"]
+[gd_scene load_steps=8 format=3 uid="uid://b7o8psq0upe3d"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0b8n4"]
 [ext_resource type="AudioStream" uid="uid://c1ukakjl3qe8k" path="res://Sounds/bush (mp3cut.net).mp3" id="2_150fj"]
 [ext_resource type="AudioStream" uid="uid://bxthn4x8l6827" path="res://Sounds/torch.mp3" id="3_p1j8m"]
+[ext_resource type="AudioStream" uid="uid://bskxhs34a42a4" path="res://Sounds/walking.mp3" id="4_cyben"]
+[ext_resource type="AudioStream" uid="uid://dtakfx6t0ov1u" path="res://Sounds/running.mp3" id="5_r6t80"]
+[ext_resource type="AudioStream" uid="uid://ca11ejosjffhg" path="res://Sounds/jump.mp3" id="6_vs7ag"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
 radius = 0.2
@@ -39,3 +42,14 @@ stream = ExtResource("2_150fj")
 
 [node name="torch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_p1j8m")
+
+[node name="walking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cyben")
+
+[node name="running" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r6t80")
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vs7ag")
+volume_db = 10.214
+bus = &"loud noises"

@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 
 @onready var bushsound = $bush
+@onready var walking = $walking
+@onready var running = $running
+@onready var jump = $jump
 @onready var torchsound = $torch
 @onready var speed :float= 250.0
 const JUMP_VELOCITY :float= 5.0
@@ -64,10 +67,12 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("Sprint"):
 		holding_sprint = true
 		speed = 400.0
-	if Input.is_action_just_released("Sprint"):
+		running.play()
+	if Input.is_action_just_released("Sprint") or Global.hiddeninsidebush:
 		holding_sprint=false
 		speed = 250.0
-
+		running.stop()
+			
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
 		cam.rotate_x(-event.relative.y * (0.0001+camera_sensitivity*0.0001))
@@ -76,23 +81,28 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	dir = Input.get_vector("left","right","up","down").normalized()
-	
 	update_cam_movement(delta)
-	
-
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if(not Global.hiddeninsidebush):
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			jump.play()
 		var direction = (transform.basis * Vector3(dir.x, 0, dir.y)).normalized()
 		if direction:
 			velocity.x = direction.x * speed *delta
 			velocity.z = direction.z * speed *delta
+			if !walking.playing and !Global.hiddeninsidebush:
+				walking.play()
 		else:
+			if walking.playing:
+				walking.stop()
 			velocity.x = move_toward(velocity.x, 0, speed*delta)
 			velocity.z = move_toward(velocity.z, 0, speed*delta)
 		move_and_slide()
+	elif Global.hiddeninsidebush:
+		walking.stop()
+		running.stop()
 	if Global.inbush and not Global.hiddeninsidebush and dir != Vector2.ZERO and !bushsound.playing:
 		bushsound.play()
 	elif Global.inbush and not Global.hiddeninsidebush and dir == Vector2.ZERO:
@@ -103,7 +113,9 @@ func _physics_process(delta):
 func _hiddeninbush():
 	if Global.hiddeninsidebush :
 		flashlight.visible = false
+		print("did it shut off?")
 		torchsound.play()
 	else:
 		flashlight.visible = true
+		print("it didnt cause this was played")
 		torchsound.play()

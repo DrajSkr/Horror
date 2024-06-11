@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
-
+@onready var hello = $hello
+@onready var canyouseeme = $canyouseeme
+@onready var laugh = $laugh
+@onready var rightbehindyou = $rightbehindyou
 @onready var walking_sound = $walking
 @onready var running_sound = $running
 @onready var jump_sound = $jump
@@ -104,7 +107,7 @@ func _physics_process(delta):
 		running_sound.play()
 	if(dir != Vector2.ZERO and not holding_sprint and not Global.hiddeninsidebush and not walking_sound.playing):
 		walking_sound.play()
-	if(dir == Vector2.ZERO):
+	if Global.hiddeninsidebush or dir==Vector2.ZERO:
 		running_sound.stop()
 		walking_sound.stop()
 	
@@ -117,3 +120,15 @@ func _nothiddeninbush():
 	flashlight.visible = true
 	torch_sound.play()
 	Global.hiddeninsidebush = false
+
+func _on_hellotimer_timeout():
+	hello.play()
+
+func _on_canyouseemetimer_timeout():
+	canyouseeme.play()
+
+func _on_laughtimer_timeout():
+	laugh.play()
+
+func _on_rightbehindyoutimer_timeout():
+	rightbehindyou.play()

@@ -1,8 +1,8 @@
 extends Node3D
 @onready var deadtree1 = load("res://Assets/Dead Tree/object_1.tscn")
-@onready var deadtree2 =load("res://Assets/Dead Tree/object_2.tscn")
-@onready var deadtree3 =load("res://Assets/Dead Tree/object_3.tscn")
-@onready var deadtree4 =load("res://Assets/Dead Tree/object_4.tscn")
+@onready var deadtree2 = load("res://Assets/Dead Tree/object_2.tscn")
+@onready var deadtree3 = load("res://Assets/Dead Tree/object_3.tscn")
+@onready var deadtree4 = load("res://Assets/Dead Tree/object_4.tscn")
 @onready var bush_inst = load("res://Scenes/bush.tscn")
 
 @onready var windsound =$"wind sound"
@@ -21,7 +21,7 @@ func _ready():
 	var y_axis=halfmaplength
 	while(x_axis>-halfmaplength):
 		while(y_axis>-halfmaplength):
-			var tree_prob = 0.93 #1 - 0.07(thala)
+			var tree_prob = 0.93 #1 - 0.07(thala) #lol
 			var chance = randf()
 			if(chance>1-prob):
 				var ch = randf()

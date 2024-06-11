@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cd4rwdico12nn"
+path="res://.godot/imported/right behind you.mp3-65be24c2a508632ec1645e25ea7d0383.mp3str"
+
+[deps]
+
+source_file="res://Sounds/right behind you.mp3"
+dest_files=["res://.godot/imported/right behind you.mp3-65be24c2a508632ec1645e25ea7d0383.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

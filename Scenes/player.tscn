@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://djrio3rqmhddy"]
+[gd_scene load_steps=11 format=3 uid="uid://djrio3rqmhddy"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0b8n4"]
 [ext_resource type="AudioStream" uid="uid://dtakfx6t0ov1u" path="res://Sounds/running.mp3" id="3_heqxr"]
 [ext_resource type="AudioStream" uid="uid://bxthn4x8l6827" path="res://Sounds/torch.mp3" id="3_p1j8m"]
 [ext_resource type="AudioStream" uid="uid://bskxhs34a42a4" path="res://Sounds/walking.mp3" id="4_xanjg"]
 [ext_resource type="AudioStream" uid="uid://ca11ejosjffhg" path="res://Sounds/jump.mp3" id="5_4cqfv"]
+[ext_resource type="AudioStream" uid="uid://busn7qxmog45d" path="res://Sounds/hello sound.mp3" id="6_3osvo"]
+[ext_resource type="AudioStream" uid="uid://dwlsnyjprb88k" path="res://Sounds/can you see mee.mp3" id="7_6w7qe"]
+[ext_resource type="AudioStream" uid="uid://djciut4mkwc1" path="res://Sounds/laugh.mp3" id="8_g515l"]
+[ext_resource type="AudioStream" uid="uid://cd4rwdico12nn" path="res://Sounds/right behind you.mp3" id="9_yytn5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
 radius = 0.2
@@ -50,4 +54,46 @@ bus = &"footstep_sounds"
 
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_4cqfv")
+volume_db = 12.723
 bus = &"footstep_sounds"
+
+[node name="hellotimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="canyouseemetimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="laughtimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 50.0
+one_shot = true
+autostart = true
+
+[node name="rightbehindyoutimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[node name="hello" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3osvo")
+
+[node name="canyouseeme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6w7qe")
+
+[node name="laugh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g515l")
+
+[node name="rightbehindyou" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_yytn5")
+
+[connection signal="timeout" from="hellotimer" to="." method="_on_hellotimer_timeout"]
+[connection signal="timeout" from="canyouseemetimer" to="." method="_on_canyouseemetimer_timeout"]
+[connection signal="timeout" from="laughtimer" to="." method="_on_laughtimer_timeout"]
+[connection signal="timeout" from="rightbehindyoutimer" to="." method="_on_rightbehindyoutimer_timeout"]

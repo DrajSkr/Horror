@@ -10,7 +10,7 @@ func _ready():
 	sceneName = "res://Scenes/level.tscn"
 	ResourceLoader.load_threaded_request(sceneName)
 	
-func _process(delta):
+func _process(_delta):
 	scene_load_status = ResourceLoader.load_threaded_get_status(sceneName, progress)
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED :
 		var newScene = ResourceLoader.load_threaded_get(sceneName)

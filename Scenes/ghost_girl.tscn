@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://1qwxdippyqqr"]
+
+[ext_resource type="Script" path="res://Scripts/ghost_girl.gd" id="1_fdg14"]
+[ext_resource type="PackedScene" uid="uid://cgprw60i4ehyv" path="res://Assets/Girl_ghost/Ghost Girl.fbx" id="1_usjju"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4bhw0"]
+height = 1.0
+radius = 8.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gdmap"]
+height = 1.0
+radius = 1.2
+
+[node name="Ghost_girl" type="Node3D"]
+script = ExtResource("1_fdg14")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_usjju")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.785713, 0)
+
+[node name="radius" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="radius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_4bhw0")
+
+[node name="attack" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_gdmap")
+
+[node name="delaytimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
+[connection signal="timeout" from="delaytimer" to="." method="_on_delaytimer_timeout"]

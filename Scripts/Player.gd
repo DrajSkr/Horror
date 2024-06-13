@@ -85,6 +85,7 @@ func _unhandled_input(event):
 	
 
 func _physics_process(delta):
+	Global.player_pos = self.global_position
 	dir = Input.get_vector("left","right","up","down").normalized()
 	update_cam_movement(delta)
 	if not is_on_floor():

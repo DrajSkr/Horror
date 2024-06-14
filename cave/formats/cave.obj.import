@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8uipntb81x1"
+path="res://.godot/imported/cave.obj-6ce70b6b65817ea5d9aaefda9b5e1693.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cave.obj-6ce70b6b65817ea5d9aaefda9b5e1693.mesh"]
+
+source_file="res://cave/formats/cave.obj"
+dest_files=["res://.godot/imported/cave.obj-6ce70b6b65817ea5d9aaefda9b5e1693.mesh", "res://.godot/imported/cave.obj-6ce70b6b65817ea5d9aaefda9b5e1693.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -7,13 +7,24 @@ extends Node3D
 
 @onready var windsound =$"wind sound"
 @onready var bgmusic =$bgmusic
+@onready var lock = $Lock
+
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
 func _ready():
-
+	Global.connect("lock_screen",_lock_screen)
+	Global.connect("not_lock_screen",_not_lock_screen)
+	Global.connect("correct_pass_entered",_correct_pass_entered)
+	
+	lock.visible = false
+	Global.password = ""
+	for i in range(4):
+		Global.password += str(randi_range(0,9))
+	$Password.text = Global.password
+		
 	var kitna_pas = 5
 	var halfmaplength=250
 	var prob = 0.7
@@ -67,3 +78,16 @@ func _on_timer_2_timeout():
 	windsound.play()
 	bgmusic.play()
 	$Gen.visible = false
+	
+func _lock_screen():
+	Global.in_lock_screen = true
+	lock.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func _not_lock_screen():
+	Global.in_lock_screen = false
+	lock.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _correct_pass_entered():
+	Global.safe_open = true

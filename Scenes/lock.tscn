@@ -1,0 +1,229 @@
+[gd_scene load_steps=4 format=3 uid="uid://4xdqdlot8pjr"]
+
+[ext_resource type="Script" path="res://Scripts/lock.gd" id="1_0ry6l"]
+[ext_resource type="Texture2D" uid="uid://cjk421pacmtxn" path="res://Assets/Case/Screenshot 2024-06-13 235713.png" id="1_5depw"]
+[ext_resource type="Texture2D" uid="uid://dvot08ggywgxb" path="res://Assets/Case/flat-design-digital-display-font_23-2150461053-fotor-20240614132454.png" id="3_wn5jr"]
+
+[node name="Lock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ry6l")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(963.5, 599)
+scale = Vector2(1.97041, 1.89623)
+texture = ExtResource("1_5depw")
+
+[node name="screen" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 268.0
+offset_right = 1073.0
+offset_bottom = 366.0
+color = Color(0.0468434, 0.0595764, 0.00246248, 1)
+
+[node name="Nums" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1930.0
+offset_bottom = 1193.0
+
+[node name="ones" type="Sprite2D" parent="Nums"]
+position = Vector2(1001, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 35
+
+[node name="tens" type="Sprite2D" parent="Nums"]
+position = Vector2(932, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 32
+
+[node name="hundred" type="Sprite2D" parent="Nums"]
+position = Vector2(867, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 35
+
+[node name="thousand" type="Sprite2D" parent="Nums"]
+position = Vector2(808, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 32
+
+[node name="wrong_timer" type="Timer" parent="."]
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="0" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 792.0
+offset_top = 872.0
+offset_right = 922.0
+offset_bottom = 995.0
+
+[node name="1" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 632.0
+offset_top = 416.0
+offset_right = 762.0
+offset_bottom = 539.0
+
+[node name="2" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 791.0
+offset_top = 415.0
+offset_right = 921.0
+offset_bottom = 538.0
+
+[node name="3" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 951.0
+offset_top = 416.0
+offset_right = 1081.0
+offset_bottom = 539.0
+
+[node name="4" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 633.0
+offset_top = 566.0
+offset_right = 763.0
+offset_bottom = 689.0
+
+[node name="5" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 793.0
+offset_top = 567.0
+offset_right = 923.0
+offset_bottom = 690.0
+
+[node name="6" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 950.0
+offset_top = 568.0
+offset_right = 1080.0
+offset_bottom = 691.0
+
+[node name="7" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 634.0
+offset_top = 718.0
+offset_right = 764.0
+offset_bottom = 841.0
+
+[node name="8" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 793.0
+offset_top = 718.0
+offset_right = 923.0
+offset_bottom = 841.0
+
+[node name="9" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 952.0
+offset_top = 718.0
+offset_right = 1082.0
+offset_bottom = 841.0
+action_mode = 0
+
+[node name="Enter" type="Button" parent="Buttons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 569.0
+offset_right = 1270.0
+offset_bottom = 779.0
+action_mode = 0
+
+[node name="wrong" type="Control" parent="."]
+visible = false
+y_sort_enabled = true
+anchors_preset = 0
+offset_right = 1925.0
+offset_bottom = 1205.0
+
+[node name="g" type="Sprite2D" parent="wrong"]
+position = Vector2(1001, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 6
+
+[node name="n" type="Sprite2D" parent="wrong"]
+position = Vector2(932, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 13
+
+[node name="o" type="Sprite2D" parent="wrong"]
+position = Vector2(867, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 14
+
+[node name="r" type="Sprite2D" parent="wrong"]
+position = Vector2(804, 267)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 17
+
+[node name="w" type="Sprite2D" parent="wrong"]
+position = Vector2(743, 266)
+scale = Vector2(0.766665, 0.680556)
+texture = ExtResource("3_wn5jr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 22
+
+[connection signal="timeout" from="wrong_timer" to="." method="_on_wrong_timer_timeout"]
+[connection signal="pressed" from="Buttons/0" to="." method="_on0__pressed"]
+[connection signal="pressed" from="Buttons/1" to="." method="_on1__pressed"]
+[connection signal="pressed" from="Buttons/2" to="." method="_on2__pressed"]
+[connection signal="pressed" from="Buttons/3" to="." method="_on3__pressed"]
+[connection signal="pressed" from="Buttons/4" to="." method="_on4__pressed"]
+[connection signal="pressed" from="Buttons/5" to="." method="_on5__pressed"]
+[connection signal="pressed" from="Buttons/6" to="." method="_on6__pressed"]
+[connection signal="pressed" from="Buttons/7" to="." method="_on7__pressed"]
+[connection signal="pressed" from="Buttons/8" to="." method="_on8__pressed"]
+[connection signal="pressed" from="Buttons/9" to="." method="_on9__pressed"]
+[connection signal="pressed" from="Buttons/Enter" to="." method="_on_enter_pressed"]

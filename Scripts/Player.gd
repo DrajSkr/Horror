@@ -79,9 +79,10 @@ func _unhandled_input(event):
 		speed = Walk_speed
 			
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
-		cam.rotate_x(-event.relative.y * (0.0001+camera_sensitivity*0.0001))
-		cam.rotation.x = clamp(cam.rotation.x , -PI/2,PI/2)
+		if not Global.in_lock_screen:
+			rotate_y(-event.relative.x * (0.0001+camera_sensitivity*0.0001))
+			cam.rotate_x(-event.relative.y * (0.0001+camera_sensitivity*0.0001))
+			cam.rotation.x = clamp(cam.rotation.x , -PI/2,PI/2)
 	
 
 func _physics_process(delta):
@@ -90,7 +91,7 @@ func _physics_process(delta):
 	update_cam_movement(delta)
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	if(not Global.hiddeninsidebush):
+	if(not Global.hiddeninsidebush) and not Global.in_lock_screen:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			jump_sound.play()
@@ -104,11 +105,11 @@ func _physics_process(delta):
 		move_and_slide()
 		Global.dir = dir
 	
-	if(dir != Vector2.ZERO and holding_sprint and not Global.hiddeninsidebush and not running_sound.playing):
+	if(dir != Vector2.ZERO and holding_sprint and not Global.hiddeninsidebush and not running_sound.playing and not Global.in_lock_screen):
 		running_sound.play()
-	if(dir != Vector2.ZERO and not holding_sprint and not Global.hiddeninsidebush and not walking_sound.playing):
+	if(dir != Vector2.ZERO and not holding_sprint and not Global.hiddeninsidebush and not walking_sound.playing and not Global.in_lock_screen):
 		walking_sound.play()
-	if Global.hiddeninsidebush or dir==Vector2.ZERO:
+	if Global.hiddeninsidebush or dir==Vector2.ZERO or Global.in_lock_screen:
 		running_sound.stop()
 		walking_sound.stop()
 	

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bujl8g1d802f1"]
+
+[ext_resource type="PackedScene" uid="uid://drdbk8xpqrdgu" path="res://cave/formats/whole cave.fbx" id="1_71iem"]
+[ext_resource type="Texture2D" uid="uid://bqv8f2ynlxhw8" path="res://cave/formats/cave_cliff_diffuse.jpg" id="2_a7qtp"]
+[ext_resource type="Texture2D" uid="uid://cmqircu6qcf12" path="res://cave/formats/cave_cliff_normal.jpg" id="3_p7i88"]
+[ext_resource type="Texture2D" uid="uid://b10kcvrwacxyr" path="res://cave/textures/cliff_height.jpg" id="3_pfexa"]
+[ext_resource type="Texture2D" uid="uid://0ha5kvjr24cg" path="res://cave/formats/cave_cliff_roughness.png" id="4_ob52h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhisl"]
+albedo_texture = ExtResource("2_a7qtp")
+roughness_texture = ExtResource("4_ob52h")
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("3_p7i88")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_pfexa")
+
+[node name="Root Scene" instance=ExtResource("1_71iem")]
+
+[node name="Landscape_002" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uhisl")
+
+[node name="Landscape_001" parent="RootNode" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uhisl")
+
+[node name="Landscape_003" parent="RootNode" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uhisl")
+
+[node name="Landscape_004" parent="RootNode" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uhisl")

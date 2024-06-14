@@ -1,22 +1,135 @@
-[gd_scene load_steps=2 format=3 uid="uid://rxbhsrf6b1tq"]
+[gd_scene load_steps=11 format=3 uid="uid://rxbhsrf6b1tq"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_621jk"]
+[ext_resource type="PackedScene" uid="uid://bujl8g1d802f1" path="res://Scenes/cave.tscn" id="1_jf5b7"]
+[ext_resource type="ArrayMesh" uid="uid://bv6pvtwcogxde" path="res://cave/12140_Skull_v3_L2.obj" id="1_wenkj"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_xbcx6"]
+[ext_resource type="Script" path="res://Scripts/OmniLight3D.gd" id="2_lywb4"]
 
-[node name="Menu" type="Node2D"]
-script = ExtResource("1_621jk")
+[sub_resource type="Environment" id="Environment_0px13"]
+background_mode = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wrpa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wqro"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0qwui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwm0k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmwki"]
+
+[node name="menu" type="CanvasLayer"]
+script = ExtResource("1_xbcx6")
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
+environment = SubResource("Environment_0px13")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.405103, -0.627896, 0)
+shadow_enabled = true
+omni_range = 1.345
+script = ExtResource("2_lywb4")
+
+[node name="cave" parent="Background" instance=ExtResource("1_jf5b7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.747097, 0)
+
+[node name="skull" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(0.0081292, -0.00443095, -0.00377927, 0.00141171, -0.00479657, 0.00866025, -0.00565007, -0.00757361, -0.0032737, -0.0175297, -0.948087, 0.228956)
+mesh = ExtResource("1_wenkj")
+skeleton = NodePath("../..")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457799, -0.604871, 1.06553)
+current = true
+fov = 51.7593
+far = 2.82
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 227.0
-offset_right = 630.0
-offset_bottom = 383.0
-text = "Play"
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Game name" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 62
+text = "Deadly Exploration"
+
+[node name="empty space" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.84956, 3.29696e-06, 1.54018e-06, 1)
+theme_override_colors/font_hover_color = Color(0.407843, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1wrpa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6wqro")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0qwui")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mwm0k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmwki")
+text = "Start"
+
+[node name="Settings" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.84956, 3.29696e-06, 1.54018e-06, 1)
+theme_override_colors/font_hover_color = Color(0.407843, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1wrpa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6wqro")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0qwui")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mwm0k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmwki")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.84956, 3.29696e-06, 1.54018e-06, 1)
+theme_override_colors/font_hover_color = Color(0.407843, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1wrpa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6wqro")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0qwui")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mwm0k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bmwki")
+text = "Exit"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

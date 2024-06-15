@@ -5,7 +5,10 @@ signal nothiddeninbush
 signal correct_pass_entered
 signal lock_screen
 signal not_lock_screen
-
+signal yarnequipped
+signal statueequippped
+signal threadequipped
+signal needleequipped
 
 var in_lock_screen = false
 var safe_open = false
@@ -19,3 +22,9 @@ var hiddeninsidebush = false
 var inbush = false
 var ghost_on_hunt = false
 var password = ""
+var PlayerGotThread = false 
+var PlayerGotNeedle = false
+var PlayerGotClothScrap = false
+var PlayerGot
+var playerisnearyarn = false
+var playerisnearneedle = false

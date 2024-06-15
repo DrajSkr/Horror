@@ -8,8 +8,7 @@ extends Node3D
 @onready var windsound =$"wind sound"
 @onready var bgmusic =$bgmusic
 @onready var lock = $Lock
-
-
+@onready var player = $Player
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
@@ -18,6 +17,8 @@ func _ready():
 	Global.connect("lock_screen",_lock_screen)
 	Global.connect("not_lock_screen",_not_lock_screen)
 	Global.connect("correct_pass_entered",_correct_pass_entered)
+	Global.connect("yarnequipped",_yarnequipped)
+	Global.connect("needleequipped",_needleequipped)
 	
 	lock.visible = false
 	Global.password = ""
@@ -69,6 +70,12 @@ func _ready():
 
 func _on_timer_timeout():
 	$Fps.text = "FPS: "+ str(Engine.get_frames_per_second())
+	if Global.playerisnearneedle :
+		$Label.set_text("Press E to Equip")
+	elif Global.playerisnearyarn:
+		$Label.set_text("Press E to Equip")
+	else:
+		$Label.set_text("")
 	$Timer.start(1)
 
 func _on_timer_2_timeout():
@@ -91,3 +98,11 @@ func _not_lock_screen():
 
 func _correct_pass_entered():
 	Global.safe_open = true
+	
+	
+func _yarnequipped():
+	$Wool.visible =true
+	Global.playerisnearyarn = false
+func _needleequipped():
+	$"Sewing-needle".visible = true
+	Global.playerisnearneedle = false

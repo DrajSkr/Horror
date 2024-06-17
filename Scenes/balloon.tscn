@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciw77g73f6mav"]
+
+[ext_resource type="PackedScene" uid="uid://ja336eo5vxom" path="res://Assets/balloon/balloon2.glb" id="1_fcl5a"]
+
+[sub_resource type="Animation" id="Animation_ctvtn"]
+resource_name = "balloon"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/Collada visual scene group/hotairballoon_low/Balloon_low/Rope_Balloon_low/ropearoundballoon_low/defaultMaterial_007:blend_shapes/Cloth")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model/Collada visual scene group/hotairballoon_low/Balloon_low/Rope_Balloon_low/ropearoundballoon_low/defaultMaterial_007:blend_shapes/orignial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sxq6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/Collada visual scene group/hotairballoon_low/Balloon_low/Rope_Balloon_low/ropearoundballoon_low/defaultMaterial_007:blend_shapes/Cloth")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model/Collada visual scene group/hotairballoon_low/Balloon_low/Rope_Balloon_low/ropearoundballoon_low/defaultMaterial_007:blend_shapes/orignial")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8ovy"]
+_data = {
+"RESET": SubResource("Animation_sxq6c"),
+"balloon": SubResource("Animation_ctvtn")
+}
+
+[node name="balloon2" instance=ExtResource("1_fcl5a")]
+
+[node name="defaultMaterial_007" parent="Sketchfab_model/Collada visual scene group/hotairballoon_low/Balloon_low/Rope_Balloon_low/ropearoundballoon_low" index="0"]
+blend_shapes/orignial = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_c8ovy")
+}

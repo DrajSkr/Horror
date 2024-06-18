@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bo4c0ejuyetm2"
+path.s3tc="res://.godot/imported/scalp_teeth_tex.png-87eb9b5c14d96f138675851b2a4c4a4d.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "11283f8e9df28247e699e8221a2f4f9d"
+}
+
+[deps]
+
+source_file="res://Assets/monster/scalp_teeth_tex.png"
+dest_files=["res://.godot/imported/scalp_teeth_tex.png-87eb9b5c14d96f138675851b2a4c4a4d.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

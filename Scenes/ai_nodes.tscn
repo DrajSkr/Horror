@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://w2h30hv73bp4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d2ntf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y4ku3"]
+
+[node name="ai_nodes" type="StaticBody3D" groups=["ai_nodes"]]
+collision_layer = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_d2ntf")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588486, 0)
+visible = false
+mesh = SubResource("BoxMesh_y4ku3")

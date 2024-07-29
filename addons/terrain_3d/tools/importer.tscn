@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://blaieaqp413k7"]
+
+[ext_resource type="Script" path="res://addons/terrain_3d/tools/importer.gd" id="1_60b8f"]
+[ext_resource type="Terrain3DStorage" uid="uid://dkhn0q5aaf703" path="res://terrain_files/new_terrain_3d_storage.res" id="1_jfaje"]
+[ext_resource type="Terrain3DMaterial" uid="uid://dhiok7tnygylq" path="res://terrain_files/new_terrain_3d_material.res" id="2_uql7p"]
+[ext_resource type="Terrain3DTextureList" uid="uid://fxhqhf3ng5i6" path="res://terrain_files/new_terrain_3d_texture_list.res" id="3_1kmw4"]
+
+[node name="Importer" type="Terrain3D"]
+storage = ExtResource("1_jfaje")
+material = ExtResource("2_uql7p")
+texture_list = ExtResource("3_1kmw4")
+script = ExtResource("1_60b8f")
+map_type = 2
+file_name_out = "res://color.exr"

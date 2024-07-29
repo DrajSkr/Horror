@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://comqwu5wj4g5a"]
+
+[resource]
+resource_name = "Blenda-SCLERA"
+cull_mode = 2
+roughness = 0.25

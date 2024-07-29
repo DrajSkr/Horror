@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://beh88x81di7h8"]
+
+[ext_resource type="Shader" path="res://shaders/mc/sword_trail.gdshader" id="1_yqhu7"]
+
+[sub_resource type="Gradient" id="Gradient_43blu"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wiet7"]
+gradient = SubResource("Gradient_43blu")
+
+[sub_resource type="Gradient" id="Gradient_yn278"]
+offsets = PackedFloat32Array(0.134328, 0.288557, 0.527363, 0.696517)
+colors = PackedColorArray(0.172833, 0.172833, 0.172833, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o53xw"]
+gradient = SubResource("Gradient_yn278")
+
+[sub_resource type="Gradient" id="Gradient_5rxd6"]
+offsets = PackedFloat32Array(0.0845771, 0.238806, 0.810945, 0.920398)
+colors = PackedColorArray(0.172549, 0.172549, 0.172549, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eram4"]
+gradient = SubResource("Gradient_5rxd6")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yqhu7")
+shader_parameter/colr = Color(0.247159, 0.566036, 0.979381, 1)
+shader_parameter/gradient_slider = -6.0
+shader_parameter/gradient_slider2 = -3.0
+shader_parameter/alpha_grad = SubResource("GradientTexture1D_o53xw")
+shader_parameter/alpha_grad_2d = SubResource("GradientTexture2D_eram4")
+shader_parameter/alpha = SubResource("GradientTexture1D_wiet7")

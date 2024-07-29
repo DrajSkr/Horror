@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnfwm5uy83own"]
+
+[ext_resource type="PackedScene" uid="uid://n3fkc2iqdytc" path="res://M_terrain/grass/grass.glb" id="1_hus2t"]
+[ext_resource type="ArrayMesh" uid="uid://cjq1674cl7rrg" path="res://M_terrain/grass/grass_lod0.res" id="6_pr6ie"]
+[ext_resource type="ArrayMesh" uid="uid://1hvgd6r8e30d" path="res://M_terrain/grass/grass_lod1.res" id="7_j7jgk"]
+[ext_resource type="ArrayMesh" uid="uid://bjcgb3mife0b5" path="res://M_terrain/grass/grass_lod2.res" id="8_hs6ce"]
+
+[node name="grass" instance=ExtResource("1_hus2t")]
+
+[node name="plant_lod0" parent="." index="0"]
+visible = false
+mesh = ExtResource("6_pr6ie")
+
+[node name="plant_lod1" parent="." index="1"]
+visible = false
+mesh = ExtResource("7_j7jgk")
+
+[node name="plant_lod2" parent="." index="2"]
+mesh = ExtResource("8_hs6ce")

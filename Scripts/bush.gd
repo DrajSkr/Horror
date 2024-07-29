@@ -12,12 +12,3 @@ func _unhandled_input(_event):
 			Global.emit_signal("hiddeninbush")
 
 
-func _on_detect_body_entered(body):
-	if body.name == "Player":
-		inbush = true
-
-
-func _on_detect_body_exited(body):
-	if body.name == "Player":
-		inbush = false
-

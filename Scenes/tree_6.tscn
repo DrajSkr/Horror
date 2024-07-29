@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0ld3eqwcwhti"]
+
+[ext_resource type="ArrayMesh" uid="uid://b4jd8ot4r5k2a" path="res://M_terrain/trees/tree6/tree_6.mesh" id="1_y21dn"]
+[ext_resource type="Shape3D" uid="uid://cq7tn14mxo6n3" path="res://M_terrain/trees/tree6/tree_6.shape" id="2_ya2ml"]
+[ext_resource type="ArrayMesh" uid="uid://bw8ja8dh4kfg7" path="res://M_terrain/trees/tree6/tree_6_lod2.mesh" id="3_6r6rf"]
+[ext_resource type="ArrayMesh" uid="uid://6cwkxeqlhnbt" path="res://M_terrain/trees/tree6/tree6_lod3.mesh" id="4_hido7"]
+
+[node name="tree6" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0655712, 0.997753, 0)
+shape = ExtResource("2_ya2ml")
+
+[node name="tree_001" type="MeshInstance3D" parent="."]
+gi_mode = 0
+visibility_range_end = 50.0
+visibility_range_end_margin = 30.0
+visibility_range_fade_mode = 1
+mesh = ExtResource("1_y21dn")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_6r6rf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("4_hido7")

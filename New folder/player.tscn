@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxoqyfig8i560"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_usalp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
+radius = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_144k4"]
+height = 2.36502
+radius = 50.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7arah"]
+radius = 0.989039
+height = 2.44776
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1eema"]
+radius = 100.0
+
+[node name="Player" type="CharacterBody3D"]
+floor_constant_speed = true
+script = ExtResource("1_usalp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+rotation_order = 3
+shape = SubResource("CapsuleShape3D_b13to")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41352, 0)
+current = true
+
+[node name="location_rotation" type="Area3D" parent="."]
+
+[node name="location_rotation" type="CollisionShape3D" parent="location_rotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175, 0)
+shape = SubResource("CylinderShape3D_144k4")
+
+[node name="attack" type="Area3D" parent="."]
+
+[node name="attack" type="CollisionShape3D" parent="attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175, 0)
+shape = SubResource("CapsuleShape3D_7arah")
+
+[node name="location" type="Area3D" parent="."]
+
+[node name="location" type="CollisionShape3D" parent="location"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674192, 0)
+shape = SubResource("CylinderShape3D_1eema")
+
+[node name="vision" type="Area3D" parent="."]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="vision"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.2405, 0)
+depth = 5.0
+polygon = PackedVector2Array(0, 0, 30, -30, -30, -30)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.26251)
+target_position = Vector3(0, 0, -40)
+
+[node name="send_data_to_enemy" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="see_enemy_time" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="location_rotation" to="." method="_on_location_rotation_body_entered"]
+[connection signal="body_exited" from="location_rotation" to="." method="_on_location_rotation_body_exited"]
+[connection signal="body_entered" from="location" to="." method="_on_location_body_entered"]
+[connection signal="body_exited" from="location" to="." method="_on_location_body_exited"]
+[connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]
+[connection signal="timeout" from="send_data_to_enemy" to="." method="_on_send_data_to_enemy_timeout"]
+[connection signal="timeout" from="see_enemy_time" to="." method="_on_see_enemy_time_timeout"]

@@ -1,0 +1,41 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://c7i3wma7s2syy"]
+
+[ext_resource type="Texture2D" uid="uid://cg8tvdqsvnyck" path="res://Assets/kloppenheim_07_puresky_2k.exr" id="1_44kre"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r1hlq"]
+panorama = ExtResource("1_44kre")
+
+[sub_resource type="Sky" id="Sky_jdelc"]
+sky_material = SubResource("PanoramaSkyMaterial_r1hlq")
+radiance_size = 2
+
+[resource]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_jdelc")
+sky_rotation = Vector3(0, -6.25351, 0)
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.48
+tonemap_mode = 2
+tonemap_white = 5.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.15
+glow_strength = 0.9
+glow_bloom = 0.1
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.794891, 0.815299, 0.84737, 1)
+fog_density = 0.0005
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.005
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1

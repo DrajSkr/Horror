@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwcxaa7ewayto"]
+
+[ext_resource type="PackedScene" uid="uid://tj7wmwr5v6ae" path="res://Assets/house/village_lod1.glb" id="1_lrkoy"]
+[ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="3_u37l1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3cp0r"]
+frequency = 0.0095
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s1grt"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_3cp0r")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nbyna"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_3cp0r")
+
+[node name="village" instance=ExtResource("1_lrkoy")]
+
+[node name="Fur" type="Node" parent="roof_001" index="0"]
+script = ExtResource("3_u37l1")
+target_surfaces = Array[int]([1])
+number_of_shells = 32
+lod_enabled = true
+lod_min_distance = 0.29
+seed = 61895
+turbulence_texture = SubResource("NoiseTexture2D_s1grt")
+jitter_texture = SubResource("NoiseTexture2D_nbyna")
+albedo_color = Color(0.699297, 0.554019, 0, 1)
+physics_enabled = false

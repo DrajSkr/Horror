@@ -1,0 +1,19 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://do1abdqqf2hsy"]
+
+[ext_resource type="Texture2D" uid="uid://cg8tvdqsvnyck" path="res://Assets/kloppenheim_07_puresky_2k.exr" id="1_r8yji"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r2qj3"]
+panorama = ExtResource("1_r8yji")
+
+[sub_resource type="Sky" id="Sky_fdxvk"]
+sky_material = SubResource("PanoramaSkyMaterial_r2qj3")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_fdxvk")
+sdfgi_enabled = true
+sdfgi_energy = 2.0
+fog_enabled = true
+fog_density = 0.0002
+fog_aerial_perspective = 1.0
+volumetric_fog_density = 0.005

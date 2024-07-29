@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvpjefpbtslmg"]
+
+[ext_resource type="PackedScene" uid="uid://cwav1bx2enb4q" path="res://Assets/hospital/hospital.glb" id="1_61fwo"]
+
+[node name="hospital" instance=ExtResource("1_61fwo")]

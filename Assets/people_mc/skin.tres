@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://sgdghqcotdxw"]
+
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_o8wdl"]
+[ext_resource type="Shader" path="res://shaders/anime_base_female.gdshader" id="2_26ba6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t7gk"]
+render_priority = 0
+shader = ExtResource("1_o8wdl")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5t7gk")
+shader = ExtResource("2_26ba6")
+shader_parameter/color = Color(0.820018, 0.687223, 0.592314, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -1,27 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7o8psq0upe3d"]
+[gd_scene load_steps=8 format=3 uid="uid://b7o8psq0upe3d"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_0b8n4"]
+[ext_resource type="Script" path="res://Scripts/player5.gd" id="1_jx226"]
+[ext_resource type="Script" path="res://Scripts/Camera3D.gd" id="2_wj7qm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b13to"]
 radius = 0.25
 height = 1.4
 
-[node name="Player" type="CharacterBody3D"]
-collision_mask = 12
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jejv7"]
+height = 2.36502
+radius = 50.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jnxrf"]
+radius = 0.989039
+height = 2.44776
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pwd8d"]
+radius = 100.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lnitp"]
+points = PackedVector3Array(0, 0, 0, 30, 0, -30, -30, 0, -300)
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_mask = 15
 floor_constant_speed = true
-script = ExtResource("1_0b8n4")
+script = ExtResource("1_jx226")
+
+[node name="player" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 rotation_order = 3
 shape = SubResource("CapsuleShape3D_b13to")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41352, 0)
-current = true
+[node name="location_rotation" type="Area3D" parent="."]
+visible = false
+collision_mask = 32769
 
-[node name="Flashlight" type="SpotLight3D" parent="Camera3D"]
+[node name="location_rotation" type="CollisionShape3D" parent="location_rotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175, 0)
+shape = SubResource("CylinderShape3D_jejv7")
+
+[node name="attack" type="Area3D" parent="."]
+visible = false
+collision_mask = 16385
+
+[node name="attack" type="CollisionShape3D" parent="attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175, 0)
+shape = SubResource("CapsuleShape3D_jnxrf")
+
+[node name="location" type="Area3D" parent="."]
+visible = false
+
+[node name="location" type="CollisionShape3D" parent="location"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674192, 0)
+shape = SubResource("CylinderShape3D_pwd8d")
+
+[node name="send_data_to_enemy" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="see_enemy_time" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9569, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_lnitp")
+collision_mask = 2
+
+[node name="Wall_check" type="Node3D" parent="."]
+
+[node name="wall_check" type="RayCast3D" parent="Wall_check"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.279684, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="still_on_wall_check" type="RayCast3D" parent="Wall_check"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42742, 0)
+target_position = Vector3(0, 0, -2)
+
+[node name="Stick_point_holder" type="Marker3D" parent="Wall_check"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24565, -0.270073)
+
+[node name="Stick_point" type="Marker3D" parent="Wall_check/Stick_point_holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.243981)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+script = ExtResource("2_wj7qm")
+
+[node name="Flashlight" type="SpotLight3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21931)
+visible = false
 light_color = Color(0.927628, 0.761894, 0.486042, 1)
 light_energy = 50.0
 light_indirect_energy = 16.0
@@ -31,3 +104,24 @@ distance_fade_begin = 20.0
 spot_range = 20.0
 spot_attenuation = 0.225313
 spot_angle = 28.0
+
+[node name="vision" type="Area3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.77, 0)
+visible = false
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Head/vision"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.2405, 0)
+depth = 5.0
+polygon = PackedVector2Array(0, 0, 10, -30, -10, -30)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442, 0)
+visible = false
+target_position = Vector3(0, 0, -10)
+
+[connection signal="area_entered" from="location_rotation" to="." method="_on_location_rotation_area_entered"]
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_exited" from="attack" to="." method="_on_attack_body_exited"]
+[connection signal="timeout" from="see_enemy_time" to="." method="_on_see_enemy_time_timeout"]
+[connection signal="body_entered" from="Head/vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Head/vision" to="." method="_on_vision_body_exited"]

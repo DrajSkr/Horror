@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://6bmgl41sowsk"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4drblrckp682" path="res://Assets/house/something2/village_lod0_Cube.res" id="1_w6y68"]
+[ext_resource type="ArrayMesh" uid="uid://vmnlu1nadhn6" path="res://Assets/house/something2/village_lod0_Cube_001.res" id="2_pm7nw"]
+[ext_resource type="ArrayMesh" uid="uid://b3lhf7i3uap8x" path="res://Assets/house/something2/village_lod0_Cube_007.res" id="3_aphyi"]
+[ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="3_mqn00"]
+[ext_resource type="ArrayMesh" uid="uid://chp7v2p0fsu0t" path="res://Assets/house/something2/village_lod0_Cube_017.res" id="4_p5s2m"]
+[ext_resource type="ArrayMesh" uid="uid://ca22nw6qrcxt" path="res://Assets/house/something2/village_lod0_Cube_019.res" id="5_egrvn"]
+[ext_resource type="ArrayMesh" uid="uid://m1lc474r2fgf" path="res://Assets/house/something2/village_lod0_Cube_002.res" id="7_83ssr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_30hqb"]
+frequency = 0.0095
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u75eq"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_30hqb")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2oahw"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_30hqb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhp45"]
+size = Vector3(6.3941, 5.49268, 7.97235)
+
+[node name="village_lod0" type="StaticBody3D"]
+
+[node name="house" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_w6y68")
+skeleton = NodePath("")
+
+[node name="door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78777, 1.54917, 3.23612)
+mesh = ExtResource("2_pm7nw")
+skeleton = NodePath("")
+
+[node name="door_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, -0.854779, 0, 0.854779, 0, 0.854779, 0, 0, 1.06476, 1.39997, 3.94407)
+mesh = ExtResource("2_pm7nw")
+skeleton = NodePath("")
+
+[node name="fence" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.18649, 0, 0, 0, 1, 0, 0, 0, 3.18649, 0, 1.4767, 0)
+mesh = ExtResource("3_aphyi")
+skeleton = NodePath("")
+
+[node name="door_002" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.764407, 4.39573, 2.30819)
+mesh = ExtResource("2_pm7nw")
+skeleton = NodePath("")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.392819, 0, 0, 0, 0.300205, 0, 0, 0, 0.300205, -0.784476, 0, 3.82449)
+mesh = ExtResource("4_p5s2m")
+skeleton = NodePath("")
+
+[node name="Cube_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, -0.300205, 0, 0.300205, 0, 0.392819, 0, 0, 0.475936, -0.00301914, 4.00267)
+mesh = ExtResource("4_p5s2m")
+skeleton = NodePath("")
+
+[node name="roof" type="MeshInstance3D" parent="."]
+mesh = ExtResource("5_egrvn")
+skeleton = NodePath("")
+
+[node name="Fur" type="Node" parent="roof"]
+script = ExtResource("3_mqn00")
+target_surfaces = Array[int]([1])
+number_of_shells = 8
+lod_enabled = true
+lod_min_distance = 0.29
+lod_max_distance = 6.0
+length = 0.05
+density = 0.3
+seed = 61895
+thickness_scale = 10.2
+turbulence_texture = SubResource("NoiseTexture2D_u75eq")
+jitter_texture = SubResource("NoiseTexture2D_2oahw")
+albedo_color = Color(0.699297, 0.554019, 0, 1)
+physics_enabled = false
+
+[node name="window" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.45232, 0, 0, 0, 0.45232, 0, 0, 0, 0.45232, -2.24458, 1.73084, 3.17721)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, 0.457787, 0, 0.457787, 0, -0.457787, 0, 0, 2.24584, 4.21992, -0.544394)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_002" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.381319, 0, 0, 0, 0.381319, 0, 0, 0, 0.381319, 1.17378, 4.62822, 2.24585)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_003" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.364486, 0, 0, 0, 0.364486, 0, 0, 0, 0.364486, 1.99788, 1.57563, 4.75299)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_004" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.534938, 0, -1.74305e-07, 0, 0.534938, 0, 1.74305e-07, 0, -0.534938, -1.78908, 1.90094, -3.18649)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_005" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.501404, 0, -1.63378e-07, 0, 0.501404, 0, 1.63378e-07, 0, -0.501404, 1.38082, 1.8858, -3.18649)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_006" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.86963e-07, 0, -0.534938, 0, 0.534938, 0, 0.534938, 0, 2.86963e-07, -3.18649, 2.00634, 1.50183)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_007" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.68974e-07, 0, -0.501403, 0, 0.501404, 0, 0.501403, 0, 2.68974e-07, -3.18649, 1.9907, -1.7097)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_008" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.46387e-07, 0, 0.534938, 0, 0.534938, 0, -0.534938, 0, -4.46387e-07, 3.18649, 1.87609, -1.44485)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_009" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.18404e-07, 0, 0.501403, 0, 0.501404, 0, -0.501403, 0, -4.18404e-07, 3.18649, 1.95955, 1.85187)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_010" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, -0.457787, 0, 0.457787, 0, 0.457787, 0, 0, -2.24584, 4.6764, -0.607071)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="window_011" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.457787, 0, -4.0021e-08, 0, 0.457787, 0, 4.0021e-08, 0, -0.457787, -0.137574, 4.66713, -2.24584)
+mesh = ExtResource("7_83ssr")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00698853, 2.77417, 0.789886)
+shape = SubResource("BoxShape3D_yhp45")

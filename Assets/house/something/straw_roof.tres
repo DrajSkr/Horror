@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c324cigflwdkw"]
+
+[resource]
+resource_name = "straw_roof"
+cull_mode = 2
+albedo_color = Color(0.917646, 0.698034, 0.109805, 1)
+roughness = 0.5

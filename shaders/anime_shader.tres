@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b5nr2vg3wp2as"]
+
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_dh6sh"]
+[ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="2_8kvsc"]
+[ext_resource type="Texture2D" uid="uid://bkc6hit45ipw4" path="res://Assets/house2/house2_painted_plaster_wall_diff_1k.jpg" id="3_8sdwh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fcbe"]
+render_priority = 0
+shader = ExtResource("1_dh6sh")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5fcbe")
+shader = ExtResource("2_8kvsc")
+shader_parameter/normal_scale = 1.0
+shader_parameter/color = Color(0.999445, 0.0987565, 7.70092e-07, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("3_8sdwh")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cct15evglb0li"]
+
+[ext_resource type="Texture2D" uid="uid://dcf1tdgrlamji" path="res://Assets/house/village_lod0_painted_plaster_wall_diff_1k.jpg" id="1_cjqth"]
+[ext_resource type="Texture2D" uid="uid://fqaqqvrrqpr" path="res://Assets/house/village_lod0_painted_plaster_wall_rough_1k.png" id="2_sxxtt"]
+[ext_resource type="Texture2D" uid="uid://uqbq53da8aqj" path="res://Assets/house/village_lod0_painted_plaster_wall_nor_gl_1k.png" id="3_r1eoq"]
+
+[resource]
+resource_name = "paint_yellow"
+cull_mode = 2
+albedo_color = Color(0.856248, 0.733167, 3.85046e-07, 1)
+albedo_texture = ExtResource("1_cjqth")
+metallic_texture = ExtResource("2_sxxtt")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_sxxtt")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_r1eoq")

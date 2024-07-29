@@ -1,24 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://di3arhs0krjp4"]
 
-[ext_resource type="PackedScene" uid="uid://dieucohmiwm8" path="res://Assets/bush/source/bush/bush.FBX" id="1_076p5"]
+[ext_resource type="ArrayMesh" uid="uid://srfyh6ci2t1n" path="res://Scenes/bush.res" id="2_l738u"]
 [ext_resource type="Script" path="res://Scripts/bush.gd" id="2_ye14e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pllru"]
 radius = 1.5
 
-[node name="Bush" instance=ExtResource("1_076p5")]
+[node name="Bush" type="StaticBody3D" groups=["bush"]]
+collision_layer = 16384
+collision_mask = 0
 script = ExtResource("2_ye14e")
 
-[node name="bushgreen1" parent="RootNode" index="0"]
+[node name="RootNode" type="Node3D" parent="."]
+
+[node name="bushgreen1" type="MeshInstance3D" parent="RootNode"]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, -0.0125217, 0)
 ignore_occlusion_culling = true
+mesh = ExtResource("2_l738u")
+skeleton = NodePath("")
 
-[node name="detect" type="Area3D" parent="." index="1"]
-collision_layer = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="detect" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0324649, 1.89665, 0)
 shape = SubResource("SphereShape3D_pllru")
-
-[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
-[connection signal="body_exited" from="detect" to="." method="_on_detect_body_exited"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl4mgvevyw2r5"]
+
+[ext_resource type="PackedScene" uid="uid://c5utasw2ctji2" path="res://Assets/tree_sitting/tree_sitting.glb" id="1_qq33x"]
+
+[node name="tree_sitting" instance=ExtResource("1_qq33x")]

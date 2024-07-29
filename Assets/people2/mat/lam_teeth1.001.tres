@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://brr70rkhpqdk8"]
+
+[resource]
+resource_name = "lam_teeth1.001"
+cull_mode = 2
+roughness = 0.552786
+emission_enabled = true
+emission = Color(0.501805, 0.501805, 0.501805, 1)

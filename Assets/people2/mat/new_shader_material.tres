@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bg8fdep3a5gb4"]
+
+[ext_resource type="Shader" path="res://shaders/anime_base_female.gdshader" id="1_emojk"]
+
+[resource]
+resource_name = "Blenda-LASHES"
+render_priority = 0
+shader = ExtResource("1_emojk")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(0.0383972, 0.0383972, 0.0383971, 0.5)
+shader_parameter/fresnel = Color(0.051971, 0.051971, 0.051971, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

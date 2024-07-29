@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="movement_state" load_steps=2 format=3 uid="uid://bxh87l23qomos"]
+
+[ext_resource type="Script" path="res://Scripts/mc/movement_state.gd" id="1_wcgfe"]
+
+[resource]
+script = ExtResource("1_wcgfe")
+id = 3
+movement_speed = 715.265
+acceleration = 10.0
+camera_fov = 85.0
+animarion_speed = 2.0

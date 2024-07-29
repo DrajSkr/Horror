@@ -1,0 +1,79 @@
+[gd_scene load_steps=43 format=3 uid="uid://urvpvfumrw0a"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_mj0hl"]
+[ext_resource type="PackedScene" uid="uid://b7o8psq0upe3d" path="res://Scenes/player.tscn" id="2_kteqq"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="3_2hg82"]
+[ext_resource type="Texture2D" uid="uid://ce2wmtcdrxxsb" path="res://Assets/top-view-dry-cracked-soil-concept-global-warming-climate-change-el-nino.jpg" id="3_a0kig"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="4_1lbqt"]
+[ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="4_pjajj"]
+[ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="5_e2ifv"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="5_gax7u"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="6_56m22"]
+[ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="6_f463w"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="7_engxb"]
+[ext_resource type="AudioStream" uid="uid://b31islovttkx0" path="res://Sounds/howling-wind-109590.mp3" id="8_r24il"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="8_vf68m"]
+[ext_resource type="AudioStream" uid="uid://d0b78x8o2cn5e" path="res://Sounds/horror-background-atmosphere-156462.mp3" id="8_w0maj"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="9_rl5wj"]
+[ext_resource type="Texture2D" uid="uid://cc6m73lqroig4" path="res://Assets/Icons/gas-mask.png" id="9_v8ct8"]
+[ext_resource type="Script" path="res://Scripts/monster_spawn.gd" id="10_blaeb"]
+[ext_resource type="PackedScene" uid="uid://r3myr1uidior" path="res://Scenes/tree.tscn" id="10_f8eu1"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="11_iyfkk"]
+[ext_resource type="Shader" path="res://Scenes/film_grain.gdshader" id="11_uekem"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="12_d85l8"]
+[ext_resource type="PackedScene" uid="uid://6bmgl41sowsk" path="res://Scenes/house_lod_0.tscn" id="12_g86q5"]
+[ext_resource type="Texture2D" uid="uid://cg8tvdqsvnyck" path="res://Assets/kloppenheim_07_puresky_2k.exr" id="13_ypwgb"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_oq7dh"]
+vertices = PackedVector3Array(-261.34, 0.5, -249.85, -261.34, 0.5, 249.15, 261.91, 0.5, 249.15, 261.91, 0.5, -249.85)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rc8nl"]
+albedo_texture = ExtResource("3_a0kig")
+uv1_scale = Vector3(80, 80, 80)
+uv1_offset = Vector3(80, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hvtcg"]
+lightmap_size_hint = Vector2i(52, 52)
+add_uv2 = true
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl32w"]
+albedo_texture = ExtResource("3_a0kig")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_keml8"]
+size = Vector3(50, 0.032, 50)
+
+[sub_resource type="Resource" id="Resource_4prab"]
+script = ExtResource("5_gax7u")
+amount = 2500
+enabled = true
+override_global_seed = true
+custom_seed = 4
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_yr08i"]
+script = ExtResource("6_56m22")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(0, 360, 0)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_xdch0"]
+script = ExtResource("7_engxb")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resourc

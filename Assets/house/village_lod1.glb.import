@@ -1,0 +1,117 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://tj7wmwr5v6ae"
+path="res://.godot/imported/village_lod1.glb-20001b027bd4acc138c090f736e421cb.scn"
+
+[deps]
+
+source_file="res://Assets/house/village_lod1.glb"
+dest_files=["res://.godot/imported/village_lod1.glb-20001b027bd4acc138c090f736e421cb.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"glass": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/glass.tres"
+},
+"paint": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/paint.tres"
+},
+"paint_red": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/paint_red.tres"
+},
+"paint_yellow": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/paint_yellow.tres"
+},
+"straw_roof": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/straw_roof.tres"
+},
+"wood": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/wood.tres"
+},
+"wood_varient": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/house/something/wood_varient.tres"
+}
+},
+"meshes": {
+"village_Cube": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Assets/house/something/village_Cube.res"
+},
+"village_Cube_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Assets/house/something/village_Cube_001.res"
+},
+"village_Cube_002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Assets/house/something/village_Cube_002.res"
+},
+"village_Cube_007": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Assets/house/something/village_Cube_007.res"
+},
+"village_Cube_017": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Assets/house/something/village_Cube_017.res"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

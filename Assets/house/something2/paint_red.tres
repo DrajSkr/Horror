@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dgnw23m6r4oug"]
+
+[ext_resource type="Texture2D" uid="uid://dcf1tdgrlamji" path="res://Assets/house/village_lod0_painted_plaster_wall_diff_1k.jpg" id="1_r5hkd"]
+[ext_resource type="Texture2D" uid="uid://cah6b5x7xg18m" path="res://Assets/house/village_lod0_painted_plaster_wall_rough_1k_4.png" id="2_v04a5"]
+[ext_resource type="Texture2D" uid="uid://dob53o8bplpxl" path="res://Assets/house/village_lod0_painted_plaster_wall_nor_gl_1k_3.png" id="3_cmu5j"]
+
+[resource]
+resource_name = "paint_red"
+cull_mode = 2
+albedo_color = Color(0.924212, 0.473594, 0, 1)
+albedo_texture = ExtResource("1_r5hkd")
+metallic_texture = ExtResource("2_v04a5")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_v04a5")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_cmu5j")

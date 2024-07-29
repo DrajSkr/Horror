@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://r3myr1uidior"]
+
+[ext_resource type="ArrayMesh" uid="uid://dmcthayilcqrb" path="res://Assets/tree/something/tree.res" id="1_ox7ej"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_imtxo"]
+
+[node name="tree" type="StaticBody3D"]
+
+[node name="oak" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.340023, -0.402428, -0.0150208)
+gi_mode = 0
+visibility_range_end = 50.0
+visibility_range_end_margin = 20.0
+visibility_range_fade_mode = 1
+mesh = ExtResource("1_ox7ej")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172928, 0.954486, 0.517873)
+shape = SubResource("CylinderShape3D_imtxo")
